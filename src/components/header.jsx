@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 
 function Header() {
   const [open, setOpen] = useState(false);
 
+  const navLink =
+  "block px-3 py-2 rounded-lg text-white text-lg font-medium no-underline transition-all duration-300";
+
+  const activeNavLink = "bg-yellow-400 text-red-700";
+
   return (
     <header className="bg-red-700 shadow-lg">
       <div className="relative max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
-        
         {/* Logo */}
         <Link
           to="/"
@@ -58,60 +62,89 @@ function Header() {
         <nav
           className={`${
             open ? "block" : "hidden"
-          } absolute top-full left-0 right-0 z-50 mt-2 w-full bg-red-700 md:static md:mt-0 md:w-auto md:bg-transparent md:block`}
+          } absolute top-full left-0 right-0 z-50 bg-red-700 md:static md:block md:bg-transparent`}
         >
-          <ul className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 p-6 md:p-0 list-none">
-
+         <ul className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 p-6 md:p-0 list-none">
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="text-white text-lg font-medium hover:text-yellow-300 no-underline"
+                end
                 onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `${navLink} ${
+                    isActive
+                      ? activeNavLink
+                      : "hover:bg-yellow-400 hover:text-red-700"
+                  }`
+                }
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
+              <NavLink
                 to="/about"
-                className="text-white text-lg font-medium hover:text-yellow-300 no-underline"
                 onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `${navLink} ${
+                    isActive
+                      ? activeNavLink
+                      : "hover:bg-yellow-400 hover:text-red-700"
+                  }`
+                }
               >
                 About
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
+              <NavLink
                 to="/services"
-                className="text-white text-lg font-medium hover:text-yellow-300 no-underline"
                 onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `${navLink} ${
+                    isActive
+                      ? activeNavLink
+                      : "hover:bg-yellow-400 hover:text-red-700"
+                  }`
+                }
               >
                 Services
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
+              <NavLink
                 to="/contact"
-                className="text-white text-lg font-medium hover:text-yellow-300 no-underline"
                 onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `${navLink} ${
+                    isActive
+                      ? activeNavLink
+                      : "hover:bg-yellow-400 hover:text-red-700"
+                  }`
+                }
               >
                 Contact
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
+              <NavLink
                 to="/shop"
-               className="text-white text-lg font-medium hover:text-yellow-300 no-underline"
                 onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `${navLink} ${
+                    isActive
+                      ? activeNavLink
+                      : "hover:bg-yellow-400 hover:text-red-700"
+                  }`
+                }
               >
                 Shop
-              </Link>
+              </NavLink>
             </li>
-
           </ul>
         </nav>
       </div>
