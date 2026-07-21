@@ -5,7 +5,7 @@ function Footer() {
         {/* Section 1 - Logo & Brand */}
         <div className="text-center md:text-left">
           <img
-            src="/logo.png"
+            src="/logo.jpg"
             alt="Debonair Stores Logo"
             className="w-20 h-10 mb-4 mx-auto md:mx-0"
           />
