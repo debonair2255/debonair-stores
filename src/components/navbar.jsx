@@ -20,6 +20,18 @@ function Navbar() {
       <Link to="/shop" className="text-white hover:text-gray-300 px-4 py-2">
         Shop
       </Link>
+      <li>
+  <NavLink to="/wishlist" className="text-white hover:text-gray-300 px-4 py-2">
+    Wishlist ❤️
+  </NavLink>
+</li>
+
+<li>
+  <NavLink to="/cart" className="text-white hover:text-gray-300 px-4 py-2">
+    Cart 🛒
+  </NavLink>
+</li>
+
       </div>
     </nav>
   );

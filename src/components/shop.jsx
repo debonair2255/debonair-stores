@@ -1,74 +1,13 @@
 import { useState } from "react";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../context/cartcontext";
+import products from "../data/products";
 function Shop() {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
-  const [cart, setCart] = useState([]);
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      image: "/products/shoe1.jpg",
-      name: "Classic Sneakers",
-      category: "Shoes",
-      price: "₦35,000",
-      favorite: false,
-    },
-    {
-      id: 2,
-      image: "/products/shirt1.jpg",
-      name: "Men's Polo Shirt",
-      category: "Clothes",
-      price: "₦18,000",
-      favorite: false,
-    },
-    {
-      id: 3,
-      image: "/products/bag1.jpg",
-      name: "Leather Handbag",
-      category: "Accessories",
-      price: "₦25,000",
-      favorite: false,
-    },
-    {
-      id: 4,
-      image: "/products/watch1.jpg",
-      name: "Luxury Watch",
-      category: "Accessories",
-      price: "₦42,000",
-      favorite: false,
-    },
-    {
-      id: 5,
-      image: "/products/heel1.jpg",
-      name: "Ladies Heels",
-      category: "Shoes",
-      price: "₦28,000",
-      favorite: false,
-    },
-    {
-      id: 6,
-      image: "/products/jacket1.jpg",
-      name: "Casual Jacket",
-      category: "Clothes",
-      price: "₦30,000",
-      favorite: false,
-    },
-  ]);
-
-const addToCart = (product) => {
-    setCart([...cart, product]);
-  };
-
-
-  const toggleFavorite = (id) => {
-    setProducts(
-      products.map((product) =>
-        product.id === id
-          ? { ...product, favorite: !product.favorite }
-          : product
-      )
-    );
-  };
+  const { wishlist, toggleWishlist, addToCart } = useCart();
+  
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.name
@@ -123,11 +62,13 @@ const addToCart = (product) => {
               key={product.id}
               className="bg-white rounded-xl shadow-md overflow-hidden"
             >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-72 w-full object-cover"
-              />
+              <Link to={`/product/${product.id}`}>
+  <img
+    src={product.image}
+    alt={product.name}
+    className="h-72 w-full object-cover hover:scale-105 transition duration-300"
+  />
+</Link>
 
               <div className="p-5">
 
@@ -138,11 +79,11 @@ const addToCart = (product) => {
                   </p>
 
                   <button
-                    onClick={() => toggleFavorite(product.id)}
-                    className="text-2xl"
-                  >
-                    {product.favorite ? "❤️" : "🤍"}
-                  </button>
+               onClick={() => toggleWishlist(product)}
+               className="text-2xl">
+                {wishlist.some((item) => item.id === product.id)
+                 ? "❤️" : "🤍"}
+                </button>
 
                 </div>
 
@@ -151,14 +92,18 @@ const addToCart = (product) => {
                 </h2>
 
                 <p className="text-2xl font-semibold my-3">
-                  {product.price}
+                  ₦{product.price.toLocaleString()}
                 </p>
               
-               <button
-             onClick={() => addToCart(product)}
-            className="w-full bg-[#0B3A63] text-white py-3 rounded-lg hover:bg-orange-500">
-            Add to Cart
-            </button>
+             <button
+  onClick={() => {
+    addToCart(product);
+    navigate("/cart");
+  }}
+  className="w-full bg-[#0B3A63] text-white py-3 rounded-lg hover:bg-orange-500"
+>
+  Add to Cart
+</button>
 
               </div>
 

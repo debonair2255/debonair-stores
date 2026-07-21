@@ -6,7 +6,11 @@ import Contacts from './components/contacts';
 import Services from './components/services';
 import Shop from './components/shop';
 import './index.css';
-
+import Wishlist from "./components/wishlist";
+import Cart from "./components/cart";
+import SignIn from "./components/signin";
+import GetStarted from "./components/getstarted";
+import ProductDetails from "./components/productsdetails";
 function App() {
   return (
     <Layout>
@@ -16,6 +20,11 @@ function App() {
         <Route path="/contact" element={<Contacts />} />
         <Route path="/services" element={<Services />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/get-started" element={<GetStarted />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </Layout>
   );

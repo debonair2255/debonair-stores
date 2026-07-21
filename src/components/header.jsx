@@ -1,20 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
-import {
-  Menu,
-  X,
-  Search,
-  ShoppingCart,
-  User,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.jpg";
 
 function Header() {
   const [open, setOpen] = useState(false);
 
   const navLink =
-    "px-4 py-2 text-white hover:text-yellow-400 transition duration-300";
-
+  "block px-3 py-2 rounded-lg text-white text-lg font-medium no-underline transition-all duration-300  hover:text-yellow-400";
   const active = "text-yellow-400 font-semibold";
 
   return (
@@ -70,23 +63,23 @@ function Header() {
           })}
         </nav>
 
-        {/* Icons */}
-        <div className="hidden md:flex items-center gap-5 text-white">
-          <button className="hover:text-yellow-400 transition">
-            <Search size={22} />
-          </button>
+        <div className="hidden lg:flex items-center gap-4">
 
-          <button className="hover:text-yellow-400 transition relative">
-            <ShoppingCart size={22} />
-            <span className="absolute -top-2 -right-2 bg-yellow-400 text-black rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
-              0
-            </span>
-          </button>
+  <Link
+    to="/signin"
+    className="px-5 py-2 border-2 border-yellow-400 rounded-full text-yellow-400 font-semibold hover:bg-yellow-400 hover:text-black transition duration-300"
+  >
+    Sign In
+  </Link>
 
-          <button className="hover:text-yellow-400 transition">
-            <User size={22} />
-          </button>
-        </div>
+  <Link
+    to="/get-started"
+    className="px-6 py-2 rounded-full bg-yellow-400 text-black font-bold hover:bg-yellow-300 transition duration-300 shadow-lg"
+  >
+    Get Started
+  </Link>
+
+</div>
 
         {/* Mobile Button */}
         <button
@@ -100,7 +93,7 @@ function Header() {
       {/* Mobile Menu */}
       {open && (
         <nav className="md:hidden bg-black/95 px-6 pb-6">
-          <ul className="space-y-4 text-center">
+          <ul className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3 p-6 md:p-0 list-none">
             <li>
               <NavLink to="/" onClick={() => setOpen(false)} className={navLink}>
                 Home
@@ -124,7 +117,21 @@ function Header() {
                 Shop
               </NavLink>
             </li>
-
+            <li>
+              <NavLink to="/cart" onClick={() => setOpen(false)} className={navLink}>
+                Cart 🛒
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/signin" onClick={() => setOpen(false)} className={navLink}>
+                Sign In
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/get-started" onClick={() => setOpen(false)} className={navLink}>
+                Get Started
+              </NavLink>
+            </li>
             <li>
               <NavLink to="/contact" onClick={() => setOpen(false)} className={navLink}>
                 Contact
