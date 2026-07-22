@@ -10,7 +10,7 @@ import Wishlist from "./components/wishlist";
 import Cart from "./components/cart";
 import SignIn from "./components/signIn";
 import GetStarted from "./components/getstarted";
-import ProductDetails from "./components/ProductsDetails";
+import ProductDetails from "./components/productsdetails";
 function App() {
   return (
     <Layout>
