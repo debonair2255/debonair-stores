@@ -8,7 +8,7 @@ import Shop from './components/shop';
 import './index.css';
 import Wishlist from "./components/wishlist";
 import Cart from "./components/cart";
-import SignIn from "./components/signin";
+import SignIn from "./components/signIn";
 import GetStarted from "./components/getstarted";
 import ProductDetails from "./components/productsdetails";
 function App() {

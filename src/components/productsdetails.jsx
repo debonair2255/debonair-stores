@@ -30,7 +30,7 @@ function ProductDetails() {
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-[550px] object-cover"
+            className="w-full h-137.5 object-cover"
           />
         </div>
 
