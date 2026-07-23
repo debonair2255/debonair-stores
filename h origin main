@@ -1,0 +1,14 @@
+warning: in the working copy of 'src/App.jsx', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/src/App.jsx b/src/App.jsx[m
+[1mindex 5254183..fddaf54 100644[m
+[1m--- a/src/App.jsx[m
+[1m+++ b/src/App.jsx[m
+[36m@@ -8,7 +8,7 @@[m [mimport Shop from './components/shop';[m
+ import './index.css';[m
+ import Wishlist from "./components/wishlist";[m
+ import Cart from "./components/cart";[m
+[31m-import SignIn from "./components/signin";[m
+[32m+[m[32mimport SignIn from "./components/signIn";[m
+ import GetStarted from "./components/getstarted";[m
+ import ProductDetails from "./components/productsdetails";[m
+ function App() {[m
