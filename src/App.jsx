@@ -9,7 +9,7 @@ import './index.css';
 import Wishlist from "./components/wishlist";
 import Cart from "./components/cart";
 import SignIn from "./components/signIn";
-import GetStarted from "./components/getstarted";
+import GetStarted from "./components/getStarted";
 import ProductDetails from "./components/productsdetails";
 function App() {
   return (
