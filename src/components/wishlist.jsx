@@ -1,4 +1,4 @@
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartcontext";
 
 function Wishlist() {
   const { wishlist } = useCart();
