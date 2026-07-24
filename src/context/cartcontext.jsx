@@ -1,10 +1,33 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
+  // Load Cart from Local Storage
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+// clear cart
+const clearCart = () => {
+  setCart([]);
+};
+
+  // Load Wishlist from Local Storage
+  const [wishlist, setWishlist] = useState(() => {
+    const savedWishlist = localStorage.getItem("wishlist");
+    return savedWishlist ? JSON.parse(savedWishlist) : [];
+  });
+
+  // Save Cart whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  // Save Wishlist whenever it changes
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
 
   // Add to Cart
   const addToCart = (product) => {
@@ -41,10 +64,7 @@ export function CartProvider({ children }) {
         item.id === id
           ? {
               ...item,
-              quantity:
-                item.quantity > 1
-                  ? item.quantity - 1
-                  : 1,
+              quantity: item.quantity > 1 ? item.quantity - 1 : 1,
             }
           : item
       )
@@ -81,17 +101,18 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{
-        cart,
-        wishlist,
-        addToCart,
-        toggleWishlist,
-        increaseQuantity,
-        decreaseQuantity,
-        removeFromCart,
-        cartTotal,
-      }}
-    >
+  value={{
+    cart,
+    wishlist,
+    addToCart,
+    toggleWishlist,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+    cartTotal,
+    clearCart,
+  }}
+>
       {children}
     </CartContext.Provider>
   );

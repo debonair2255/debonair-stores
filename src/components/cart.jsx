@@ -118,6 +118,8 @@ function Cart() {
 
                 <span>Total</span>
 
+              
+
                 <span>
                   ₦{cartTotal.toLocaleString()}
                 </span>
@@ -133,12 +135,12 @@ function Cart() {
                   Continue Shopping
                 </Link>
 
-                <button
-                  className="flex-1 bg-[#0B3A63] hover:bg-orange-500 text-white py-3 rounded-lg font-semibold"
+              <Link
+                to="/checkout"
+              className="flex-1 bg-[#0B3A63] hover:bg-orange-500 text-white py-3 rounded-lg font-semibold text-center"
                 >
                   Proceed to Checkout
-                </button>
-
+                </Link>
               </div>
 
             </div>

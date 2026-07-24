@@ -11,6 +11,8 @@ import Cart from "./components/cart";
 import SignIn from "./components/signIn";
 import GetStarted from "./components/getStarted";
 import ProductDetails from "./components/productsdetails";
+import Checkout from "./components/checkout";
+import OrderSuccess from "./components/ordersuccess";
 function App() {
   return (
     <Layout>
@@ -25,6 +27,8 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/get-started" element={<GetStarted />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
       </Routes>
     </Layout>
   );
