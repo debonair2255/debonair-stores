@@ -79,7 +79,7 @@ function Header() {
           {/* Cart */}
           <Link
             to="/cart"
-            className="relative px-5 py-2 border-2 border-white rounded-full text-white font-semibold hover:bg-white hover:text-black transition duration-300"
+            className="relative px-5 py-2 border-none text-white font-semibold hover:bg-white hover:text-black transition duration-300"
           >
             🛒 Cart
 
